@@ -1,0 +1,12 @@
+mixin carousel_modal(content, params)
+  .carousel_modal&attributes(attributes)
+    +template-engine.carousel-modal__template
+      +carousel(content.list, {mixin:"carousel-modal__item"}).carousel-modal__list(data-carousel!={
+        initialIndex: "{{{index}}}",
+        fade: CAROUSEL_MODAL && CAROUSEL_MODAL.class === 'carousel-modal_book'
+      })
+    block
+      
+mixin carousel-modal__item(content, params)
+  .carousel-modal__item&attributes(attributes)
+  +inside-content(content).inside-content_modal

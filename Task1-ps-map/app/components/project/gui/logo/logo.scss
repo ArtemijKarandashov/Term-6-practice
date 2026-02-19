@@ -1,0 +1,43 @@
+.logo {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("logo", $mod){
+      @content;
+    }
+  }
+  $posIndex: (x: 185, y: 280, w:494, h:240.77);
+  $posInner: (x: 185, y: 100, w:294, h:143.29);
+  $margin: 60px;
+
+  width: vh(map-get($posIndex, w));
+
+  &_main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $z-modal - 1;
+    margin: vh($margin);
+
+    //transition: transform 0.3s ease-in-out;
+    transform-origin: 0 0;
+    //transform: translate(
+    //    vh(map-get($posIndex, x) - $margin),
+    //    vh(map-get($posIndex, y) - $margin)
+    //);
+
+    html:not(._no-index) & {
+      visibility: hidden;
+    }
+
+    ._no-index & {
+      transform:
+        translate(
+            vh(map-get($posInner, x) - $margin),
+            vh(map-get($posInner, y) - $margin)
+        )
+        scale(map-get($posInner, w) / map-get($posIndex, w));
+    }
+  }
+
+
+}

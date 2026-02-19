@@ -1,0 +1,147 @@
+{
+  "name": "po_dlya_biblioteki_lenina",
+  "version": "0.0.154",
+  "project_id": "190616",
+  "description": "190616 po_dlya_biblioteki_lenina",
+  "author": "peppers",
+  "private": true,
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "serve": "gulp serve",
+    "backstop:approve": "backstop approve",
+    "backstop:ref": "backstop reference --configPath=backstop-config.js",
+    "backstop:ref:localhost": "npm run backstop:ref -- --type=localhost",
+    "backstop:ref:file": "npm run backstop:ref -- --type=file",
+    "backstop:ref:production": "npm run backstop:ref -- --type=production",
+    "backstop:test": "backstop test --configPath=backstop-config.js",
+    "backstop:test:localhost": "npm run backstop:test -- --type=localhost",
+    "backstop:test:file": "npm run backstop:test -- --type=file",
+    "backstop:test:production": "npm run backstop:test -- --type=production",
+    "electron:run": "electron ./dist/electron.js",
+    "electron:debug": "electron ./app/electron.js --debug",
+    "electron:build-n-run": "gulp build && npm run electron",
+    "electron:build": "electron-builder",
+    "test": "eslint app/components/**/*.js",
+    "eslint": "eslint app/components/**/*.js",
+    "eslint:fix": "eslint app/components/**/*.js --fix",
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
+  },
+  "main": "dist/electron.js",
+  "build": {
+    "appId": "po_dlya_biblioteki_lenina",
+    "mac": {
+      "category": "peppers.po_dlya_biblioteki_lenina"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "!app/**/*"
+    ],
+    "asar": false,
+    "asarUnpack": "dist",
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": ""
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/plugin-proposal-class-properties": "latest",
+    "@babel/plugin-proposal-decorators": "latest",
+    "@babel/plugin-proposal-export-namespace-from": "latest",
+    "@babel/plugin-proposal-function-bind": "latest",
+    "@babel/plugin-proposal-function-sent": "latest",
+    "@babel/plugin-proposal-json-strings": "latest",
+    "@babel/plugin-proposal-numeric-separator": "latest",
+    "@babel/plugin-proposal-object-rest-spread": "latest",
+    "@babel/plugin-proposal-throw-expressions": "latest",
+    "@babel/plugin-syntax-dynamic-import": "latest",
+    "@babel/plugin-syntax-import-meta": "latest",
+    "@babel/polyfill": "latest",
+    "@babel/preset-env": "latest",
+    "babelify": "latest",
+    "browser-sync": "latest",
+    "browserify": "latest",
+    "del": "latest",
+    "event-stream": "latest",
+    "glob": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-csso": "latest",
+    "gulp-eslint": "latest",
+    "gulp-filter": "latest",
+    "gulp-if": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-notify": "latest",
+    "gulp-plumber": "latest",
+    "gulp-pug": "latest",
+    "gulp-pxtorem": "latest",
+    "gulp-rename": "latest",
+    "gulp-replace": "latest",
+    "gulp-sass": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-svg-symbols": "latest",
+    "gulp-uglify": "latest",
+    "gulp-watch": "latest",
+    "html-entities": "latest",
+    "http-proxy-middleware": "latest",
+    "lodash": "latest",
+    "gulp-sftp": "latest",
+    "vinyl-ftp": "latest",
+    "husky": "latest",
+    "prettier": "latest",
+    "babel-eslint": "latest",
+    "eslint-config-airbnb-base": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-prettier": "latest",
+    "backstopjs": "latest",
+    "jstransformer-markdown-it": "latest",
+    "markdown-it-attrs": "latest",
+    "markdown-it-highlight": "latest",
+    "run-sequence": "latest",
+    "vinyl-buffer": "latest",
+    "vinyl-source-stream": "latest",
+    "watchify": "latest",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "primus": "latest"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "flickity": "latest",
+    "flickity-fade": "^1.0.0",
+    "flickity-fullscreen": "^1.1.1",
+    "gsap": "^2.1.3",
+    "handlebars": "latest",
+    "jquery": "latest",
+    "jquery.panzoom": "^3.2.3",
+    "navigo": "latest",
+    "normalize.css": "latest",
+    "panzoom": "^8.1.0",
+    "tingle.js": "^0.13.2",
+    "yargs": "latest"
+  }
+}

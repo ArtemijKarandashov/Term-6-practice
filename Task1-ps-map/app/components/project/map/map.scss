@@ -1,0 +1,136 @@
+body {
+  overflow: hidden;
+}
+.panzoom {
+  overflow: visible;
+}
+.map {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("map", $mod){
+      @content;
+    }
+  }
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+
+  //&__gradient {
+  //  z-index: 1;
+  //  height: vh(456px);
+  //  width: vh(3840px);
+  //  background: linear-gradient(180deg, #FFFFFF -56px, rgba(255, 255, 255, 0) 88.93%);
+  //}
+
+  &__bg {
+    // object-fit: contain;
+    width: 100%;
+    height: 100%; 
+    background-size: cover;
+    background-blend-mode: multiply;
+  }
+
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    // overflow: visible;
+  }
+
+  &__zoom-area {
+    width: 100%;
+    height: 100%;
+    // overflow: hidden;
+  }
+
+  &__group {
+    position: absolute;
+    width: vh(169px);
+    height: vh(169px);
+    background: #9C79FF;;
+    font-weight: bold;
+    font-size: vh(96px);
+    line-height: vh(169px);
+    margin: vh(-168px -105px);
+    transform: scale(0);
+    /* identical to box height */
+
+    text-align: center;
+
+    color: $WHITE;
+    // z-index: 15000;
+  }
+
+  &__group-block {
+    position: absolute;
+    background-image: url("../images/pointer.png");
+    background-size: vh(63px)vh(103px);
+    width: vh(63px);
+    height: vh(103px);
+    transform: scale(0);
+
+
+  }
+  &__group-cont {
+    position: relative;
+    left: vh(-382px);
+    top: vh(-362px);
+    width: 0;
+    margin-left: vh(553px);
+    // width: vh(553px);
+    height: vh(362px);
+    overflow-y: auto;
+    // overflow: scroll;
+  }
+
+  &__zoom {
+    width: 100%;
+    height: 100%;
+    //position: absolute;
+    //display: flex;
+    //justify-content: space-between;
+    //align-items: center;
+    //align-content: center;
+
+    // right: 3%;
+    // top: 40%;
+  }
+  &__zoom-button {
+    z-index: 2;
+    width: vh(40px);
+    height: vh(40px);
+    margin-left: vh(20px);
+    cursor: pointer;
+
+  }
+
+  &__plus-button {
+    margin-bottom: vh(10px);
+  }
+
+  &__close-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: vh(217px 131px);
+    //right: vh(64px);
+    //bottom: vh(156px);
+    z-index: 1100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //margin-top: vh(30px);
+    width: vh(410px);
+    height: vh(160px);
+    background-color: rgba(black, 0.2);
+
+    color: white;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: vh(36px);
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,25 @@
+extends ../../framework/page/page
+
+//- append constants
+//-   if php
+//-     include ../utils/php-utils/php-utils.php
+
+append mixins
+	include ../../framework/framework
+	include ../project
+
+append body_before
+	//-script.
+			if (window !== top) { document.body.className += ' _iframe'; }
+	//-include _svg-symbols
+	//-+bitrix-panel()
+
+
+append modal
+	+custom-modal(null, {fullscreen:true})#media-modal
+		+media-modal(copyright.point_info)&attributes(attributes)
+
+
+block page
+	.page.custom-page
+		block content

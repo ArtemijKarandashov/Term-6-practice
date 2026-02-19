@@ -1,0 +1,17 @@
+mixin p-map(content, params)
+  .p-map&attributes(attributes)
+    +map(copyright.map)
+    +carousel(copyright.sections.part, {mixin:"p-map__sections"}).p-map__carousel(data-carousel="p-map" data-carousel-index="{{$id}}")
+    block
+
+mixin p-map__sections(content, params)
+  a(data-id="{{$id}}" href=content.href data-navigo).p-map__sections&attributes(attributes)
+    .p-map__part.p-map__sections-part&attributes(
+      {
+        style: {
+          "background-image": content.img.src,
+          "background-color":content.color
+        }
+      }
+    )
+      .p-map__part-title!=content.title

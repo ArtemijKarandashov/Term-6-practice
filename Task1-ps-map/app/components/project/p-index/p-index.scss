@@ -1,0 +1,23 @@
+.p-index {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("p-index", $mod){
+      @content;
+    }
+  }
+  background: #F7F6FB;
+  box-sizing: border-box;
+  height: 100%;
+  &__container {
+    height: 100%;
+  }
+  &__sections {
+    height: 100%;
+  }
+  // &__sections {
+  // 	display: flex;
+	 //  justify-content: flex-start;
+	 //  align-content: space-between;
+	 //  flex-wrap: wrap;
+  // }
+}

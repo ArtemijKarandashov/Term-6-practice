@@ -1,0 +1,21 @@
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: builder.Dockerfile
+    container_name: psmap-builder
+    restart: always
+    working_dir: /app
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./dist:/app/dist
+      - ./build:/app/build
+      - ./logs:/var/log/cron 
+      - ./crontab.txt:/app/crontab.txt
+      - ./rebuild-ps-map.sh:/app/rebuild-ps-map.sh
+      - ./ssh:/ssh
+volumes:
+  dist:
+  build:

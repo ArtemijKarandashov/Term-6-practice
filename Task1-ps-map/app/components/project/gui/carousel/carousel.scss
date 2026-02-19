@@ -1,0 +1,36 @@
+@import "../../../../../node_modules/flickity/dist/flickity.css";
+//@import "../../../../../node_modules/flickity-fade/flickity-fade.css";
+//@import "../../../../../node_modules/slick-carousel/slick/slick.scss";
+//-@import "../../../../../node_modules/slick-carousel/slick/slick-theme.scss";
+.flickity {
+  &-slider {
+    display: flex;
+    align-items: center;
+  }
+  &-viewport {
+    overflow: visible;
+  }
+}
+
+.carousel {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("carousel", $mod){
+      @content;
+    }
+  }
+  &__list {
+    height: 50%;
+  }
+  //.slick-dots {
+  //  display: inline-block;
+  //  [role="presentation"] {
+  //    display: inline-block;
+  //
+  //    &.slick-active {
+  //      color: #626200;
+  //    }
+  //  }
+  //}
+
+}

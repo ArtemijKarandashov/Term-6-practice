@@ -1,0 +1,27 @@
+block modal
+if typeof version === "function"
+  script.
+    var VERSION = !{JSON.stringify(version())};
+    function base_url(url) {
+      return (!{JSON.stringify(base_url(''))} + url).replace(/\/{2,}/g, "/");
+    }
+
+  script.
+    (function(w,d){
+      function preload(){
+        try{return d.createElement( "link" ).relList.supports( "preload" );} catch (e) {}
+        return false;
+      }
+      function promise(){ return w.Promise; }
+      function t(fn,url,attr) {
+        if (!fn()) d.write('<script src="' + url + '" ' + attr + '></' + 'script>');
+      }
+      t(preload,"!{base_url('scripts/libs/cssrelpreload.js')}", "async");
+      t(promise,"!{base_url('scripts/libs/es6-promise.min.js')}", "defer");
+
+    }(window,document));
+
+block scripts
+  +script(`scripts/${projectName}.js`)
+
+block body_after

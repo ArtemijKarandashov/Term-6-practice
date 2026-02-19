@@ -1,0 +1,7 @@
+mixin scroll-info-text(content, params)
+  #{content || 'div'}.scroll-info-text
+    .scroll-info-text__content&attributes(attributes)
+      //-.scroll-info-text__scrollbar
+        .scroll-info-text__track
+        .scroll-info-text__thumb
+      block

@@ -1,0 +1,17 @@
+import {
+  registerPlugins,
+  Plugin
+} from "<%- relativePath %>";
+
+class <%-className%> extends Plugin {
+  // eslint-disable-next-line
+  constructor($element) {
+    super($element);
+  }
+}
+
+registerPlugins({
+  name: "<%-camelCase%>",
+  Constructor: <%-className%>,
+  selector: ".<%-componentName%>"
+});

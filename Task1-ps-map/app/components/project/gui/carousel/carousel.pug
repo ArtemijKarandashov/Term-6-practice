@@ -1,0 +1,9 @@
+mixin carousel(content, params)
+  if typeof params === 'string'
+    -params = {mixin: params}
+  .carousel(class=mod('carousel', params && params.mod))&attributes(attributes)
+    +pug-list(content, 'carousel__item', params)
+    block
+
+mixin carousel__item(content, params)
+  +pug-mixin(params.mixin, content, params).carousel__item(class=params.item)

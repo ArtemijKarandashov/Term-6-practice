@@ -1,0 +1,29 @@
+//.section-carousel {
+//  // Константы
+//  @mixin mod($mod) {
+//    @include modifier("section-carousel", $mod){
+//      @content;
+//    }
+//  }
+//
+//	position: absolute;
+//	bottom: 10%;
+//	margin-left: vh(75px);
+//  z-index: 4;
+//  &__list {
+//    height: 50%;
+//  }
+//
+//  &__item {
+//  	width: vh(150px);
+//  }
+//
+//}
+//
+//.sections_carousel__item.is-selected {
+//  @extend %SECTION_TITLE;
+//  height: vh(296px);
+//}
+.sections-carousel > .flickity-slider  {
+	height: vh(300px);
+}

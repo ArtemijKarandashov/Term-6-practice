@@ -1,0 +1,94 @@
+.p-map {
+	// Константы
+	@mixin mod($mod) {
+		@include modifier("p-map", $mod){
+			@content;
+		}
+	}
+
+	background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 88.93%);
+  box-sizing: border-box;
+  padding: vh(50px);
+  height: 100%;
+
+	&__part-img {
+		width: vh(60px);
+		height: vh(60px);
+	}
+
+	&__carousel {
+    overflow-x: hidden; 
+		position: absolute;
+		bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translate(0, 200%);
+    transition: transform 0.6s ease-out;
+    height: vh(300px);
+    @include mod(in) {
+      transform: translate(0, 0.01%);
+    }
+    & > .flickity-viewport {
+      & > .flickity-slider {
+      height: vh(300px);
+    }
+    }
+	}
+
+	&__sections {
+    bottom: 0;
+  	width: vh(790px);
+  	height: vh(149px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  	transform: skew(-17deg, 0deg);
+    transform-origin: 0 100%;
+
+  	overflow: hidden;
+		text-decoration: none;
+		vertical-align:bottom;
+    margin-left: vh(-8px);
+    &.p-map__sections_active {
+      height: vh(296px);
+      z-index: 25;
+    }
+	}
+
+  &__part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 107%;
+    height: vh(149px);
+    padding: 0 12%;
+    transform: skew(17deg, 0deg);
+    transform-origin: 0 100%;
+    transition: height 0.5s;
+
+    background-size: cover;
+    background-blend-mode: multiply;
+
+    .p-map__sections_active & {
+      width: 112%;
+      height: vh(296px);
+      justify-content: flex-end;
+      padding-right: 14%;
+      padding-bottom: 7%;
+    }
+  }
+
+	&__part-title {
+		@extend %MAP-SECTION;
+		font-weight: 900;
+    transition-delay: 0.1s;
+    transition: 0.2s;
+    word-wrap: break-word;
+    .p-map__sections_active & {
+      transition: 0.7s;
+      font-size: vh(48px);
+    }
+	}
+}

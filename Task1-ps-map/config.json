@@ -1,0 +1,39 @@
+{
+	"media": {
+    "image": { "width": 1920, "height": 1080 }
+  },
+  "template": {
+    "elementType": "document",
+    "fields": [
+      [ "image", "file/image", "Лого" ],
+      [ "section", "content", "Разделы"]
+    ],
+    "section": {
+      "elementType": "document",
+      "drag": true,
+      "fields": [
+        [ "image", "file/image", "Карта" ],
+        [ "points", "array", "Подразделы" ]
+      ],
+      "points": {
+        "elementType": "document",
+        "drag": true,
+        "fields": [
+          [ "title", "text", "Заголовок", { "label": true } ],
+          [ "text", "text", "Текст", { "label": true } ],
+          [ "media", "array", "Галерея" ]
+       	],
+        "media": {
+          "elementType": "document",
+          "drag": true,
+          "fields": [
+            [ "subtitle", "text", "Подпись", { "label": true } ],
+      			[ "video", "file/video", "Видео", { "previewField": "image" } ]
+            [ "image", "file/image", "Фото" ]
+          ]
+        }
+      }
+    }
+  }
+}
+ 

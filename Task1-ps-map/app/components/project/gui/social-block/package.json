@@ -1,0 +1,21 @@
+{
+  "author": "PC16\\t.davydenkova",
+  "package": "social-block",
+  "description": "social-block - описание",
+  "dependencies": [],
+  "status": {},
+  "#status": [
+    {
+      "id": "local",
+      "description": "используется только в этом приложении"
+    },
+    {
+      "id": "project",
+      "description": "может быть использованно в других приложениях этого проекта"
+    },
+    {
+      "id": "framework",
+      "description": "может быть использованно в других проектах"
+    }
+  ]
+}

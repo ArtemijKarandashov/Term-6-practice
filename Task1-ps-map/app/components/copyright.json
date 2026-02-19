@@ -1,0 +1,112 @@
+{
+  "og": {
+    "title": "Библиотека Ленина",
+    "description": "Библиотека Ленина",
+    "canonical_url": "",
+    "fb_app_id": "",
+    "image": {
+      "default": {
+        "val":"",
+        "width": 1200,
+        "height": 630
+      }
+    }
+  },
+  "sections": {
+    "img":{
+      "src": "{{base_url image}}"
+    },
+    "text": "{{text}}",
+    "id": "sections-list",
+    "map_bg":"{{base_url map}}",
+
+    "part": {
+      "list": "section",
+      "item": {
+        "index": "{{id}}",
+        "href": "map?id={{$id}}",
+        "parent-href": "/",
+        "img": {
+          "src": "url('{{base_url image}}')",
+          "alt": "{{title}}"
+        },
+        "title": "{{title}}",
+        "color": "{{color}}"
+      }
+    }
+  },
+  "map": {
+    "plus": {
+      "src": "images/plus.png",
+      "alt": "zoom +"
+    },
+    "color_map": "{{color_map}}",
+    "logo": "{{logo}}",
+    "minus": {
+      "src": "images/minus.png",
+      "alt": "zoom -"
+    },
+    "map_bg":"url('{{base_url map_bg}}')",
+    "img": {
+      "src": "url('{{base_url map}}')",
+      "alt": "Карта Петроградского района",
+      "width": "1280"
+    },
+    "points" : {
+      "list": "items",
+      "item": {
+        "color": "{{section.color}}",
+        "href": "point-info?id={{$id}}",
+        "y": "{{coordinates.y}}",
+        "x": "{{coordinates.x}}",
+        "img": {
+          "src": "{{base_url image}}",
+          "alt": "{{title}}"
+        },
+        "title": "{{title}}",
+        "subtitle": "{{subtitle}}"
+      }
+    }
+  },
+  "point_info": {
+    "map_id": "{{{map_id}}}",
+    "sectionTitle": "{{{shrink-text 40 30 section.title}}}",
+    "title": "{{#shrink-text 20 50}}{{{some-set title_info title}}}{{/shrink-text}}",
+    "text": "{{{text}}}",
+    "id":"{{$id}}",
+    "logo":"{{base_url logo}}",
+    "image":"{{base_url image}}",
+    "button": {
+      "background-image": "url({{base_url section.image}})",
+      "background-color": "{{section.color}}"
+    },
+    "list" : {
+      "list": "media",
+      "item": {
+        "list":"this",
+        "item": {
+          "id": "{{$id}}",
+          "content_id": "{{content_id}}",
+          "index": "{{id}}",
+          "video": "{{base_url video}}",
+          "poster": "{{base_url poster}}",
+          "image": "{{base_url image}}",
+          "subtitle": "{{subtitle}}"
+
+        }
+      }
+    },
+    "carousel_media" : {
+      "list": "carousel_media",
+      "item": {
+        "id": "{{$id}}",
+        "index": "{{id}}",
+        "video": "{{base_url video}}",
+        "poster": "{{base_url poster}}",
+        "image": "{{base_url image}}",
+        "subtitle": "{{subtitle}}",
+        "title": "{{title}}"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+node_modules
+logs
+*.log
+.git
+.gitignore
+README*
+*Dockerfile
+docker-compose.yml
+update-map.sh

@@ -1,0 +1,14 @@
+@import "../../framework/page/page";
+
+.custom-page {
+  @extend %DEFAULT;
+	box-sizing: border-box;
+  position: relative;
+  height: 100vh;
+
+  // border: vh(60px) solid white;
+  // overflow: scroll;
+  //&_not-index  {
+  //	border: vh(60px) solid white;
+  //}
+}

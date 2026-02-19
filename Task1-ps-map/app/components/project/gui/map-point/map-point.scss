@@ -1,0 +1,300 @@
+.map-point {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("map-point", $mod){
+      @content;
+    }
+  }
+
+  --color: #ffffff;
+  position: absolute;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: row;
+  z-index: 100;
+
+  
+  // padding: vh(5px);
+
+  text-decoration: none;
+  transform: translate(-100%, -100%) translateX(vh(63px));
+
+  &_active {
+    z-index: 101;
+  }
+
+  &_group{
+    &:before{
+      display: none;
+    }
+
+    &:after{
+      position: absolute;
+      content: "";
+      bottom: vh(-40px);
+      left: vh(-15px);
+      width: vh(90px);
+      height: vh(83px);
+      pointer-events: none;
+      background: image("shadow-2.png") no-repeat center/ contain;
+      z-index: -1;
+      opacity: 0;
+    
+      // @include mod(visible) {
+      //   animation: opacity 0.5s ease-out 0.8s forwards;
+      // }
+    }
+  }
+
+  &_visible{
+    &:after{
+      animation: opacity 0.5s ease-out 0.8s forwards;
+    }
+  }
+
+  .map-point__group-cont > & {
+    position: static;
+    transform: none;
+  }
+
+  &__shadow{
+    position: absolute;
+    content: "";
+    bottom: vh(-40px);
+    left: vh(-15px);
+    width: vh(200px);
+    height: vh(90px);
+    pointer-events: none;
+    background: image("shadow.png") no-repeat center/ contain;
+    z-index: 1;
+    opacity: 0;
+    
+    @include mod(visible) {
+      animation: opacity 0.5s ease-out 0.8s forwards;
+    }
+  }
+
+
+  &__content {
+    position: relative;
+    width: vh(177.5px);
+    height: auto;
+    min-height: vh(60px);
+    background: $WHITE;
+    padding: vh(0px 20px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: scale(0);
+    transform-origin: 90% vh(100px) 0;
+    // border: vh(5px) solid var(--color);
+    z-index: 3;
+
+    &:before{
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: vh(5px) solid var(--color);
+      box-sizing: border-box;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @include mod(visible) {
+      @include animation(map-point__content_visible 0.8s cubic-bezier(.47,1.45,.68,1.03) 0.5s both) {
+        0% {
+          transform: scale(0) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.1) rotate(5deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+    }
+
+    @include mod(unvisible) {
+      @include animation(map-point__content_unvisible 0.5s cubic-bezier(.47,1.45,.68,1.03) 0.2s both) {
+        0% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        20% {
+          transform: scale(1.1) rotate(5deg);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(0) rotate(0deg);  
+          opacity: 0;
+        }
+      }
+    }
+
+  }
+  &__group-cont {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transform: scale(0);
+    transform-origin: 100% 100%;
+    transition: transform 0.3s;
+    @include mod(active) {
+      transform: scale(1);
+    }
+      
+    &:before{
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: vh(5px) solid var(--color);
+      box-sizing: border-box;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .map-point{
+      &:after{
+    //   bottom: -40px;
+    //   left: -15px;
+    //   width: 90px;
+    //   height: 83px;
+    //   pointer-events: none;
+    //   background: image("shadow-2.png") no-repeat center/ contain;
+      }
+    }
+
+    .map-point__content{
+      &:before{
+        display: none;
+      }
+    }
+  }
+  &__group-content {
+    @extend .map-point__content;
+    position: relative;
+    width: vh(60px);
+    height: vh(60px);
+    padding: 0;
+    min-height: 0;
+    z-index: 0;
+    &:before,
+    &:after{
+      display: none;
+    }
+
+    &:after{
+    }
+  }
+
+  &__count {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--color);
+    font-weight: bold;
+    font-size: vh(30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    text-align: center;
+
+    color: $WHITE;
+
+    // &:after{
+    //   position: absolute;
+    //   content: "";
+    //   bottom: -40px;
+    //   left: -15px;
+    //   width: 90px;
+    //   height: 83px;
+    //   pointer-events: none;
+    //   background: image("shadow-2.png") no-repeat center/ contain;
+    //   z-index: 1;
+    //   opacity: 0;
+      
+    //   @include mod(visible) {
+    //     animation: opacity 0.5s ease-out 0.8s forwards;
+    //   }
+    // }
+  }
+
+  &__title {
+    margin-top: vh(15px);
+    opacity: 0;
+    @extend %POINT-TITLE;
+    //width: vh(400px);
+    //margin: vh(40px) vh(50px) 0;
+    @include mod(visible) {
+      opacity: 1;
+      transition: opacity 0.3s ease-out (0.8s + 0.5s);
+    }
+  }
+  &__subtitle {
+    margin-bottom: vh(15px);
+     opacity: 0;
+    @extend %POINT-SUBTITLE;
+    margin-top: vh(4px);
+    @include mod(visible) {
+      opacity: 0.7;
+      transition: opacity 0.3s ease-out (0.8s + 0.5s + 0.2s);
+    }
+  }
+  &__block {
+    // transform: scale(1);
+    transform-origin: 50% 0%;
+
+  	position: absolute;
+    right: 0;
+    top: 100%;
+    // top: calc(100% + 0.231vh);
+    // right: calc(0px - .231vh);
+    //background-image: url("../images/pointer.png");
+    //background-size: vh(63px)vh(103px);
+
+    //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    @include triangle(vh(21px), vh(30px), var(--color), TL);
+    //width: vh(63px);
+    //height: vh(103px);
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: vh(21px);
+      height: vh(30px);
+      background: image("pointer.png") no-repeat 0 0 / 100% 100%;
+      opacity: 0.3;
+    }
+    transform-origin: 100% 100% 0;
+    
+    @include mod(visible) {
+      @include animation(map-point__block_visible 0.8s cubic-bezier(.47,1.45,.68,1.03) 0.8s both) {
+        0% {
+          // transform: scale(0) rotate(0deg);
+        }
+        50% {
+          // transform: scale(1.1) rotate(20deg);
+        }
+        100% {
+          // transform: scale(1) rotate(0deg);
+        }
+      }
+    }
+    .map-point__group-cont & {
+      display: none;
+    }
+  }
+}

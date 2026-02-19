@@ -1,0 +1,25 @@
+mixin map(content, params)
+  .map.p-index__page.p-index_map&attributes(attributes)
+    .map__zoom
+      .map__container
+        .map__zoom-area
+          .map__bg&attributes({style:{"background-image": content.map_bg, "background-color":content.color_map }})
+
+          +template-engine("", {nested: true}).map__points
+            +pug-list(content.points, "map-point")
+    //-.map__gradient
+      //- .map__zoom-button
+      //-   img(src!=content.plus.src alt!=content.plus.alt).map__plus-button
+      //-   img(src!=content.minus.src alt!=content.minus.alt).map__minus-button
+    a(href=base_url("/") data-navigo).map__close-button.p-map__close-button На главную
+    +template-engine("", {nested: true}).map__group-tpl
+      +map__group
+    block
+
+
+mixin map__group(content, params)
+  .map-point.map-point_group
+    .map-point__group-cont
+    .map-point__group-content
+      .map-point__count {{{count}}}
+      .map-point__block

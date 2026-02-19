@@ -1,0 +1,18 @@
+.scroll-text {
+	// Константы
+	@mixin mod($mod) {
+		@include modifier("scroll-text", $mod){
+			@content;
+		}
+	}
+	&__text {
+    	@extend %INFO_TEXT;
+    	width: vh(1222px);
+    	//height: vh(1040px);
+    	margin: vh(0 0 0 260px);
+      white-space: pre-wrap;
+	}
+	&__scroll {
+		height: vh(1000px);
+	}
+}

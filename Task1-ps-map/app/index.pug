@@ -1,0 +1,17 @@
+extends components/project/custom-page/custom-page
+
+prepend title
+  -let title = projectDescription;
+
+block content
+  //-img(src=content.logo).logo
+  +logo(content).logo_main
+
+  +subpage()(data-page="")
+    +p-index()
+  +subpage()(data-page="map" data-id="")
+    +p-map()
+  +subpage()(data-page="point-info")
+    +p-point-info()
+
+

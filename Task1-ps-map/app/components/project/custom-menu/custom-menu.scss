@@ -1,0 +1,30 @@
+.custom-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+
+  &__item {
+    display: inline-block;
+    text-decoration: none;
+    @include is-burger(){
+      display: block;
+      margin: auto;
+    }
+  }
+
+  &__item-link {
+    display: block;
+    margin: 0 1em;
+    @include is-burger(){
+      margin: 1em auto;
+      text-align: center;
+    }
+  }
+
+
+  /*@include is-burger(){
+    background: #cccccc;
+    min-height: 100vh;
+  }*/
+}

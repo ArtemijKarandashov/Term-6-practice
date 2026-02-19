@@ -1,0 +1,7 @@
+mixin video-player(content, params)
+  .video-player&attributes(attributes)
+    video( poster=content.image src=content.video type="video/mp4").video-player__main-image
+      //- source(src=content.src type="video/mp4")
+    .video-player__play-container
+      .video-player__play
+  block

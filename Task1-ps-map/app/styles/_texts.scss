@@ -1,0 +1,107 @@
+/**
+ * Обычный текст
+ */
+%DEFAULT {
+  font-family: $Montserrat;
+  font-size: vh(18px);
+  color: $BLACK;
+}
+
+/**
+ * 
+ */
+%SECTION_TITLE {
+  font-size: vh(43px);
+  line-height: 1.2;
+  color: $WHITE;
+}
+
+/**
+ * 
+ */
+%SECTION_TEXT {
+  font-size: vh(36px);
+  line-height: 1.6;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+%SECTION_HINT {
+  font-size: vh(34px);
+  line-height: 1.2;
+  font-weight: 500;
+  color: $WHITE;
+}
+
+/**
+ * 
+ */
+%PIN_INFO {
+  font-size: vh(42px);
+  line-height: 1.2;
+}
+
+/**
+ * 
+ */
+%SECTION_PIN {
+  font-size: vh(54px);
+  line-height: 1.2;
+  color: $WHITE;
+}
+
+/**
+ * 
+ */
+%INFO_TITLE {
+  font-size: vh(120px);
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+/**
+ * 
+ */
+%INFO_TEXT {
+  font-size: vh(36px);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/**
+ * 
+ */
+%BACKGROUND_TEXT {
+  font-size: vh(100px);
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+/**
+ * 
+ */
+%BACK-BUTTON {
+  font-size: vh(36px);
+  line-height:5.2;
+  font-weight: 900;
+  color: $WHITE;
+}
+
+%MAP-SECTION {
+  font-size: vh(32px);
+  line-height: 1.1;
+  font-weight: 900;
+  color: $WHITE;
+}
+
+%POINT-TITLE {
+  font-weight: 500;
+  font-size: vh(15px);
+  line-height: 1.1;
+}
+%POINT-SUBTITLE {
+  font-weight: 500;
+  font-size: vh(10px);
+  line-height: 1.2;
+  opacity: 0.6;
+}

@@ -1,0 +1,64 @@
+{
+	"media": {
+    "image": { "width": 3840, "height": 2160 }
+  },
+  "template": {
+    "elementType": "folder",
+    "fields": [
+      [ "labelAdmin", "","Заголовок админки", {"label":"190616"}],
+      [ "title", "", "Заголовок", { "label": true } ],
+      [ "image", "file/image", "Лого" ],
+      [ "color_map", "text", "Цвет карты" ],
+      [ "timeout", "number", "Время бездействия( в секундах)" ],
+      [ "text", "text", "Описание библиотеки"],
+      [ "section", "content", "Разделы"]
+    ],
+    "section": {
+      "elementType": "folder",
+      "drag": true,
+      "fields": [
+        ["id", "id", "id"],
+        [ "title", "text", "Заголовок", { "label": true } ],
+        [ "color", "text", "Цвет фона" ],
+        [ "image", "file/image", "Изображение" ],
+        ["map_bg", "file/image", "Карта для отметки точек", {
+          "width": 0,
+          "height": 0
+        }],
+        [ "items", "content", "Точки" ]
+      ],
+      "items": {
+        "elementType": "document",
+        "drag": true,
+        "fields": [
+          ["id", "id", "id"],
+          [ "title", "text", "Название", { "label": true } ],
+          [ "subtitle", "text", "Подпись" ],
+          ["coordinates", "coordinates", "Положение иконки", {
+
+            "backgroundField": "map_bg",
+            "modalWidth": 1000,
+            "modalHeight": 1000,
+            "fitIn": true
+          }],
+          [ "image", "file/image", "Изображение" ],
+          [ "title_info", "text", "Заголовок", { "label": true } ],
+          [ "text", "multilineText", "Текст", { "label": true } ],
+          [ "media", "array", "Галерея" ]
+        ],
+        "media": {
+          "elementType": "document",
+          "drag": true,
+          "fields": [
+            ["id", "id", "id"],
+            [ "title", "text", "Заголовок", { "label": true } ],
+            [ "subtitle", "text", "Подзаголовок" ],
+            [ "video", "file/video", "Видео", { "previewField": "image" } ],
+            [ "image", "file/image", "Фото" ]
+          ]
+        }
+      }
+    }
+  }
+}
+

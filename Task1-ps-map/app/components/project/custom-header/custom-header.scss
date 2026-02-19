@@ -1,0 +1,52 @@
+@import "../../framework/header/header";
+
+//@include header(X, 1);
+@include header(Y);
+
+.custom-header {
+  // Константы
+  @mixin mod($mod) {
+    .custom-header_#{$mod} & {
+      @content;
+    }
+  }
+
+  &__logo {
+    position: relative;
+
+    display: inline-block;
+    vertical-align: middle;
+    width: 88px;
+    height: 89px;
+    background: image("header/logo_pep.svg") no-repeat center {
+      size: contain;
+    };
+  }
+
+  &__burger {
+    width: 40px;
+    margin: 20px;
+    float: right;
+  }
+  &__wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    //opacity: 0;
+    //transition: opacity .3s;
+    //@include menu-visible(){
+    //  opacity: 1;
+    //}
+  }
+
+  &__content {
+    @include is-burger(){
+      background: #cccccc;
+      padding: 2em;
+    }
+  }
+
+  &__mute-button {
+    float: right;
+  }
+
+}

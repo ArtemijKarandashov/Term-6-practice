@@ -1,0 +1,21 @@
+mixin media-modal(content, params)
+  .media-modal&attributes(attributes)
+    +carousel(content.carousel_media, "media-modal__album").media-modal__carousel(data-carousel-index="{{__id__}}")
+      .media-modal__nav.media-modal__nav_prev.carousel__nav.carousel__nav_prev
+        img(src="./images/arrow.svg").media-modal__nav-icon
+      .media-modal__nav.media-modal__nav_next.carousel__nav.carousel__nav_next
+        img(src="./images/arrow.svg").media-modal__nav-icon
+    block
+
+mixin media-modal__album(content, params)
+  .media-modal__album()&attributes(attributes)
+    .media-modal__wrapper(data-id!=content.id)
+      .media-modal__bg
+        | {{#is_video}}
+        +video-player(content)
+        | {{else}}
+        img(alt=content.title src=content.image)
+        | {{/is_video}}
+      .media-modal__info
+        .media-modal__title!=content.title
+        .media-modal__subtitle!=content.subtitle

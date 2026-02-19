@@ -1,0 +1,19 @@
+mixin sections(content, params)
+  .sections.sections_no-text.p-index__sections(id=content.id)&attributes(attributes)
+    +custom-scroll
+      .sections__wrap
+        .sections__part.sections__part_placeholder
+          +logo.sections__logo
+        +pug-list(content.part,"sections__part")
+        .sections__text
+          .sections__rectangle
+          .sections__info!=content.text
+      .sections__hint
+        img(src="./images/Vector.svg").sections__hint-logo
+        .sections__hint-text ТЯНИТЕ ВВЕРХ
+
+mixin sections__part(content, params)
+  a(href=content.href data-navigo data-lal=content.img.src).sections__part.p-index__sections-part&attributes({style:{"background-image": content.img.src, "background-color":content.color }})
+    .sections__part-title!=content.title
+  //- a(href=base_url(content.href) data-navigo).sections__part.p-index__sections-part
+    // img(src!=content.img.src alt=content.img.alt).sections__part-img

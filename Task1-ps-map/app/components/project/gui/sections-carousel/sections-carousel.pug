@@ -1,0 +1,9 @@
+mixin sections-carousel__item(content, params)
+  +pug-mixin(params.mixin, content, params).sections-carousel__item(class=params.item)
+
+mixin sections-carousel(content, params)
+  if typeof params === 'string'
+    -params = {mixin: params}
+  .sections-carousel(class=mod('sections-carousel', params && params.mod))&attributes(attributes)
+    +pug-list(content, 'sections-carousel__item', params)
+    block

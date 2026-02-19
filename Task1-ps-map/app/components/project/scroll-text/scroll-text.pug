@@ -1,0 +1,5 @@
+mixin scroll-text(content, params)
+	.scroll-text&attributes(attributes)
+		+scroll-info-text.scroll-text__scroll
+			.scroll-text__text!=content.text
+		block

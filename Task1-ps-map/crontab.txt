@@ -1,0 +1,6 @@
+SHELL=/bin/bash
+HOME=/app
+
+@reboot bash /app/rebuild-ps-map.sh >> /var/log/cron/ps-map.log 2>&1 
+
+0 7 1,15 * * bash /app/rebuild-ps-map.sh >> /var/log/cron/ps-map.log 2>&1

@@ -1,0 +1,13 @@
+mixin map-point(content, params)
+  a(href=content.href data-navigo data-x=content.y).map-point.p-map_map-point&attributes(  {
+    style:{
+      left: `${content.x}px`,
+      top: `${content.y}px`,
+      "--color": content.color
+    }
+  })
+    .map-point__content
+      .map-point__title!=content.title
+      .map-point__subtitle!=content.subtitle
+      .map-point__block
+    .map-point__shadow

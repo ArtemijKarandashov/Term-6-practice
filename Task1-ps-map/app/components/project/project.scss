@@ -1,0 +1,23 @@
+//- GUI
+@import "../framework/subpage/subpage";
+@import "gui/gui";
+
+//- Элементы
+
+
+//- Блоки
+@import "sections/sections";
+@import "map/map";
+@import "point-info/point-info";
+@import "media-modal/media-modal";
+@import "custom-modal/custom-modal";
+@import "scroll-text/scroll-text";
+@import "custom-page/custom-page";
+@import "scroll-text/scroll-text";
+// @import "custom-header/custom-header";
+// @import "custom-menu/custom-menu";
+
+//- Страницы
+@import "p-map/p-map";
+@import "p-index/p-index";
+@import "p-point-info/p-point-info";

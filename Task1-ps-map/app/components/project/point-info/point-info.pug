@@ -1,0 +1,39 @@
+mixin point-info(content, params)
+  .point-info.map__page_point-info&attributes(attributes)
+    .point-info__back-text!=content.sectionTitle
+    .point-info__content
+      .point-info__content-left
+        h1.point-info__title!=content.title
+        //.point-info__triangle
+        //.point-info__text-back
+        +scroll-text(content)
+      .point-info__content-right
+        .point-info__media
+          +carousel(content.list, {mixin:"point-info__album"}, content.id).point-info__carousel
+            .point-info__navigation
+              .point-info__nav-buttons
+                .point-info__btn.point-info__nav.point-info__nav_prev.carousel__nav.carousel__nav_prev
+                  img(src="./images/arrow.svg").point-info__nav-icon
+                .point-info__btn.point-info__nav.point-info__nav_next.carousel__nav.carousel__nav_next
+                  img(src="./images/arrow.svg").point-info__nav-icon
+                .point-info__counter.carousel__counter
+              .point-info__btn(data-id!=content.id data-index!=content.index data-modal="#media-modal" data-modal-params!=content.id)
+                img(src="./images/open.svg")
+      a(href=`map?id=${content.map_id}` data-navigo).point-info__close-button
+        .point-info__close-text&attributes({style:content.button}) Вернуться на карту
+    block
+
+
+
+mixin point-info__album(content, params)
+  .point-info__album(data-id!=content.id  )&attributes(attributes)
+    +pug-list(content, 'carousel__item-part', params)
+
+
+mixin carousel__item-part(content, params)
+  .point-info__wrapper(data-id!=content.id data-index!=content.index data-modal="#media-modal" data-modal-params!=content.content_id)
+    img(alt=content.title src=content.image)
+    | {{#is_video}}
+    .point-info__play-container
+      .point-info__play
+    | {{/is_video}}

@@ -1,0 +1,129 @@
+.sections {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("sections", $mod){
+      @content;
+    }
+  }
+  position: relative;
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    padding: vh(60px);
+    box-sizing: border-box;
+  }
+  &__part {
+    opacity: 0;
+    position: relative;
+    //width: vh($section-width);
+    height: vh($section-height);
+    background-size: cover;
+    background-blend-mode: multiply;
+    cursor: pointer;
+    text-decoration: none;
+
+    &_placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_animate {
+      transition: opacity 0.8s;
+      opacity: 1;
+    }
+    &-img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__hint{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: vh(500px);
+    height: vh(174px);
+    margin: auto;
+    background-color: rgba($BLACK, 0.6);
+    display: none;
+    transition: transform 0.4s ease-out;
+
+    @include mod(scrollable) {
+      display: block;
+      transform: translate(0, 0.01%);
+    }
+    @include mod(scrolled) {
+      transform: translate(0, 100%);
+    }
+
+    &-logo{
+      margin: vh(40px 45px);
+      height: vh(85px);
+      // background-image: url('../images/vector.svg');
+      // background-repeat: no-repeat;
+    }
+    &-text {
+      position: absolute;
+      bottom: vh(60px);
+      right: vh(80px);
+      @extend %SECTION_HINT;
+    }
+  }
+
+  //&_hint-up {
+  //  transition: 1s;
+  //  bottom: vh(-90px);
+  //}
+  //&_hint-down {
+  //  transition: 1s;
+  //  bottom: vh(-300px);
+  //}
+
+  &__part-title {
+    @extend %SECTION_TITLE;
+    position: absolute;
+    left: vh($section-title-ml);
+    bottom: vh($section-title-mb);
+    right: vh(60px);
+    font-weight: 900;
+    word-wrap: break-word;
+  }
+  &__rectangle {
+      position: absolute;
+      top: vh(174px);
+      width: vh($main-text_line-w);
+      border: 2px solid $RED;
+  }
+  &__text{
+    position: relative;
+    height: vh($section-height);
+    grid-column-start: 4;
+    grid-column-end: 6;
+    width: 89.3%;
+    padding: 0 vh($section-title-ml);
+    margin-right: vh(150px);
+    background-color: $WHITE;
+    // margin-left: auto;
+    @include mod(no-text) {
+      display: none;
+    }
+  }
+
+
+  &__info {
+    @extend %SECTION_TEXT;
+    position: absolute;
+    width: 76%;
+    bottom: vh(120px);
+
+  }
+  &_scrollable {
+    height: 100vh;
+  }
+}
+

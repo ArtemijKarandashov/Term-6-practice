@@ -1,0 +1,19 @@
+include ../../framework/modal/modal
+
+mixin custom-modal(content, params)
+  -
+    function addTingleClass(condition, _class){
+      var obj = attributes, name = 'data-tingle-class', sep = ' ';
+      var result = obj[name] ? obj[name].split(sep) : [];
+      if (condition) {
+        result.push(_class);
+      }
+      obj[name] = result.join(sep) || false;
+    }
+    params = assign({}, params);
+    addTingleClass(params.fullscreen, 'tingle-modal_fullscreen');
+
+  +modal().custom-modal&attributes(attributes)
+    img(src="./images/cross.svg" data-modal-close="").custom-modal__close-btn
+    .custom-modal__content
+      block

@@ -1,0 +1,21 @@
+{
+  "author": <%=author%>,
+  "package": <%=package%>,
+  "description": <%=description%>,
+  "dependencies": {},
+  "status": {},
+  "#status": [
+    {
+      "id": "local",
+      "description": "используется только в этом приложении"
+    },
+    {
+      "id": "project",
+      "description": "может быть использованно в других приложениях этого проекта"
+    },
+    {
+      "id": "framework",
+      "description": "может быть использованно в других проектах"
+    }
+  ]
+}

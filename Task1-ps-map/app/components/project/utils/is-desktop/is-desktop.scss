@@ -1,0 +1,21 @@
+.is-desktop {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("is-desktop", $mod){
+      @content;
+    }
+    /*.is-desktop_#{$mod} & {
+      @content;
+    }*/
+  }
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+
+  @include MOBILE(){
+    background: #000000;
+  }
+  @include DESKTOP(){
+    background: #ffffff;
+  }
+}

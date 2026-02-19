@@ -1,0 +1,11 @@
+.p-point-info {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("p-point-info", $mod){
+      @content;
+    }
+  }
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: vh(50px);
+}

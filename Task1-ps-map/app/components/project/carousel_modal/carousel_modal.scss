@@ -1,0 +1,8 @@
+.carousel_modal {
+  // Константы
+  @mixin mod($mod) {
+    @include modifier("carousel_modal", $mod){
+      @content;
+    }
+  }
+}

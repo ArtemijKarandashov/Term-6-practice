@@ -1,0 +1,17 @@
+extends ../../framework/header/header
+
+prepend header
+  -header = {};
+  -header.burger = {"attr": {"class": "custom-header__burger"}};
+  -header.menu = {};
+  -header.menu.wrapper = {"attr": {"class": "custom-header__wrapper"}};
+  -header.menu.content = {"attr": {"class": "custom-header__content"}};
+
+
+block logo
+  .custom-header__logo
+
+block menu
+  +custom-menu(copyright.menu)
+
+block right
