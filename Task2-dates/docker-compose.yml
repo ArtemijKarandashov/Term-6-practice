@@ -1,0 +1,108 @@
+services:
+  nginx-proxy: # Прокси-сервер nginx-proxy для работы с acme-companion
+    build:
+      context: ./nginx-proxy
+      dockerfile: nginx-proxy.Dockerfile
+    container_name: nginx-proxy
+    depends_on:
+      - calendar
+    # environment:
+    #   - VIRTUAL_HOST=localhost
+    #   - VIRTUAL_PORT=9001
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      # Том для хранения сертификатов
+      - certs:/etc/nginx/certs
+      # Том для хранения виртуальных хостов
+      - vhost:/etc/nginx/vhost.d
+      # Том для хранения статики
+      - html:/usr/share/nginx/
+    networks:
+      - internal_app_network
+    restart: unless-stopped
+
+  acme-companion: # Контейнер автоматической сертификации
+    image: nginxproxy/acme-companion
+    container_name: nginx-proxy-acme
+    depends_on:
+      - nginx-proxy
+    # Используем переменные окружения из .env
+    env_file:
+      - .env
+    environment:
+      # Почта для сертификации
+      - LETSENCRYPT_EMAIL
+    volumes_from:
+      # Подключаем томы из nginx-proxy
+      - nginx-proxy
+    volumes:
+      # Том для docker events
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Том для хранения сертификатов
+      - certs:/etc/nginx/certs
+      # Том для хранения виртуальных хостов для сертификации
+      - vhost:/etc/nginx/vhost.d
+      # Том для хранения статики
+      - html:/usr/share/nginx/html
+      # Том для хранения acme-скриптов
+      - acme:/etc/acme.sh
+    networks:
+      - internal_app_network
+    restart: unless-stopped
+
+  calendar:
+    build:
+      dockerfile: backend/backend.Dockerfile
+    environment:
+      - VIRTUAL_HOST=localhost
+      - VIRTUAL_PORT=9001
+    ports:
+      - 9001:8000
+    expose:
+      - "9001"
+    networks:
+      - internal_app_network
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      dockerfile: frontend/frontend.Dockerfile
+    ports:
+    # Change port later
+      - 3001:3000
+    volumes:
+      - ./frontend:/app/frontend
+    networks:
+      - internal_app_network
+    depends_on:
+      - calendar
+
+  database:
+    image: "postgres:18"
+    ports:
+    # Change port later
+      - 5432:5432
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: default_database
+    volumes:
+      - pgdata:/var/lib/postgresql
+    networks:
+      - internal_app_network
+    command: -p 5432
+
+volumes:
+  acme:
+  certs:
+  vhost:
+  html:
+  pgdata:
+
+networks:
+  internal_app_network:
+    driver: bridge
